@@ -1,0 +1,40 @@
+[
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-fno-stack-protector",
+            "-fpic",
+            "-fshort-wchar",
+            "-mno-red-zone",
+            "-I../gnu-efi/inc/",
+            "-I../gnu-efi/inc/x86_64",
+            "-I../gnu-efi/inc/protocol",
+            "-DEFI_FUNCTION_WRAPPER",
+            "-o",
+            "Build/data.o",
+            "data.c"
+        ],
+        "directory": "/home/aryaman9199/ReeBoot/x86_64-efi",
+        "file": "data.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-fno-stack-protector",
+            "-fpic",
+            "-fshort-wchar",
+            "-mno-red-zone",
+            "-I../gnu-efi/inc/",
+            "-I../gnu-efi/inc/x86_64",
+            "-I../gnu-efi/inc/protocol",
+            "-DEFI_FUNCTION_WRAPPER",
+            "-o",
+            "Build/main.o",
+            "main.c"
+        ],
+        "directory": "/home/aryaman9199/ReeBoot/x86_64-efi",
+        "file": "main.c"
+    }
+]
