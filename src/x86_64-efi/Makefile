@@ -1,11 +1,11 @@
 LD = ld
 CC = gcc
 
-LDFLAGS = ../gnu-efi/x86_64/gnuefi/crt0-efi-x86_64.o -nostdlib -shared -Bsymbolic -L../gnu-efi/x86_64/gnuefi/ -L../gnu-efi/x86_64/lib/ -lefi -lgnuefi -T../gnu-efi/gnuefi/elf_x86_64_efi.lds
-GNU_INC = -I../gnu-efi/inc/ -I../gnu-efi/inc/x86_64 -I../gnu-efi/inc/protocol
-CFLAGS = -fno-stack-protector -fpic -fshort-wchar -mno-red-zone $(GNU_INC) -DEFI_FUNCTION_WRAPPER
+LDFLAGS = $(GNUEFI)/x86_64/gnuefi/crt0-efi-x86_64.o -nostdlib -shared -Bsymbolic -L$(GNUEFI)/x86_64/gnuefi/ -L$(GNUEFI)/x86_64/lib/ -lefi -lgnuefi -T$(GNUEFI)/gnuefi/elf_x86_64_efi.lds
+GNU_INC = -I$(GNUEFI)/inc/ -I$(GNUEFI)/inc/x86_64 -I$(GNUEFI)/inc/protocol
+CFLAGS = -fno-stack-protector -fpic -fshort-wchar -mno-red-zone $(GNU_INC) -DEFI_FUNCTION_WRAPPER -I../include
 
-OBJS = $(addprefix Build/, main.o data.o)
+OBJS = $(addprefix Build/, main.o data.o common/files.o)
 
 BUILDIR = Build
 
@@ -18,7 +18,7 @@ ISO_FILE = $(BUILDIR)/ReeBoot.iso
 all: $(ISO_FILE)
 
 Build/%.o: %.c
-	@$(MAKE) -C ../gnu-efi
+	@$(MAKE) -C $(GNUEFI)
 	mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
 
