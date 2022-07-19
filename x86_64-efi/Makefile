@@ -34,8 +34,8 @@ $(ISO_FILE): $(EFI_FILE)
 	mformat -i $(IMG_FILE) -f 1440 ::
 	mmd -i $(IMG_FILE) ::/EFI
 	mmd -i $(IMG_FILE) ::/EFI/BOOT
-	echo "Hello!" > REEBOOT.CFG
-	mcopy -i $(IMG_FILE) REEBOOT.CFG ::/  
+	echo "Hello!" > $(BUILDIR)/REEBOOT.CFG
+	mcopy -i $(IMG_FILE) $(BUILDIR)/REEBOOT.CFG ::/  
 	mcopy -i $(IMG_FILE) $< ::/EFI/BOOT/BOOTX64.EFI
 	mkdir -p $(ISO_DIR)
 	cp $(IMG_FILE) $(ISO_DIR)/
