@@ -14,9 +14,11 @@ EFI_FILE = $(BUILDIR)/ReeBoot.efi
 ISO_DIR = $(BUILDIR)/iso
 ISO_FILE = $(BUILDIR)/ReeBoot.iso
 
+
 all: $(ISO_FILE)
 
 Build/%.o: %.c
+	@$(MAKE) -C ../gnu-efi
 	mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -32,6 +34,8 @@ $(ISO_FILE): $(EFI_FILE)
 	mformat -i $(IMG_FILE) -f 1440 ::
 	mmd -i $(IMG_FILE) ::/EFI
 	mmd -i $(IMG_FILE) ::/EFI/BOOT
+	echo "Hello!" > REEBOOT.CFG
+	mcopy -i $(IMG_FILE) REEBOOT.CFG ::/  
 	mcopy -i $(IMG_FILE) $< ::/EFI/BOOT/BOOTX64.EFI
 	mkdir -p $(ISO_DIR)
 	cp $(IMG_FILE) $(ISO_DIR)/
