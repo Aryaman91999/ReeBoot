@@ -7,15 +7,36 @@
             "-fpic",
             "-fshort-wchar",
             "-mno-red-zone",
-            "-I../gnu-efi/inc/",
-            "-I../gnu-efi/inc/x86_64",
-            "-I../gnu-efi/inc/protocol",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/x86_64",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/protocol",
             "-DEFI_FUNCTION_WRAPPER",
+            "-I../include",
+            "-o",
+            "Build/main.o",
+            "main.c"
+        ],
+        "directory": "/home/aryaman9199/ReeBoot/src/x86_64-efi",
+        "file": "main.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-fno-stack-protector",
+            "-fpic",
+            "-fshort-wchar",
+            "-mno-red-zone",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/x86_64",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/protocol",
+            "-DEFI_FUNCTION_WRAPPER",
+            "-I../include",
             "-o",
             "Build/data.o",
             "data.c"
         ],
-        "directory": "/home/aryaman9199/ReeBoot/x86_64-efi",
+        "directory": "/home/aryaman9199/ReeBoot/src/x86_64-efi",
         "file": "data.c"
     },
     {
@@ -26,15 +47,16 @@
             "-fpic",
             "-fshort-wchar",
             "-mno-red-zone",
-            "-I../gnu-efi/inc/",
-            "-I../gnu-efi/inc/x86_64",
-            "-I../gnu-efi/inc/protocol",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/x86_64",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/protocol",
             "-DEFI_FUNCTION_WRAPPER",
+            "-I../include",
             "-o",
-            "Build/main.o",
-            "main.c"
+            "Build/common/files.o",
+            "common/files.c"
         ],
-        "directory": "/home/aryaman9199/ReeBoot/x86_64-efi",
-        "file": "main.c"
+        "directory": "/home/aryaman9199/ReeBoot/src/x86_64-efi",
+        "file": "common/files.c"
     }
 ]
