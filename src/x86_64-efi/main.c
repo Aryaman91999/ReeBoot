@@ -26,7 +26,6 @@ int efi_main(EFI_HANDLE Image, EFI_SYSTEM_TABLE *SystemTable) {
         Print(L"%c", (CHAR16)test[i]);
     }
 
-
     while(1);
     return EFI_SUCCESS;
 }
