@@ -5,7 +5,7 @@ LDFLAGS = $(GNUEFI)/x86_64/gnuefi/crt0-efi-x86_64.o -nostdlib -shared -Bsymbolic
 GNU_INC = -I$(GNUEFI)/inc/ -I$(GNUEFI)/inc/x86_64 -I$(GNUEFI)/inc/protocol
 CFLAGS = -fno-stack-protector -fpic -fshort-wchar -mno-red-zone $(GNU_INC) -DEFI_FUNCTION_WRAPPER -I../include
 
-OBJS = $(addprefix Build/, main.o data.o $(addprefix common/, files.o fs.o utils.o))
+OBJS = $(addprefix Build/, main.o data.o $(addprefix common/, files.o fs.o utils.o config.o))
 
 BUILDIR = Build
 
@@ -43,7 +43,7 @@ clean:
 	rm -rf $(BUILDIR)
 	rm -rf common/
 
-test_initrd: $(EFI_FILE)
+test: $(EFI_FILE)
 	dd if=/dev/zero of=$(IMG_FILE) bs=1k count=1440
 	mformat -i $(IMG_FILE) -f 1440 ::
 	mmd -i $(IMG_FILE) ::/EFI
@@ -52,8 +52,10 @@ test_initrd: $(EFI_FILE)
 	mkdir -p $(BUILDIR)/initrd/reeboot
 	touch $(BUILDIR)/initrd/reeboot/test
 	echo "Hello, World!" > $(BUILDIR)/initrd/reeboot/test
+	echo "kernel=hello\nsize=99" > $(BUILDIR)/config
 	tar -cf $(BUILDIR)/initrd.tar -C $(BUILDIR)/initrd/ reeboot/
 	mcopy -i $(IMG_FILE) $(BUILDIR)/initrd.tar ::/REEBOOT/INITRD
+	mcopy -i $(IMG_FILE) $(BUILDIR)/config ::/REEBOOT/CONFIG
 	mcopy -i $(IMG_FILE) $(EFI_FILE) ::/EFI/BOOT/BOOTX64.EFI
 	mkdir -p $(ISO_DIR)
 	cp $(IMG_FILE) $(ISO_DIR)/
