@@ -5,7 +5,7 @@ LDFLAGS = $(GNUEFI)/x86_64/gnuefi/crt0-efi-x86_64.o -nostdlib -shared -Bsymbolic
 GNU_INC = -I$(GNUEFI)/inc/ -I$(GNUEFI)/inc/x86_64 -I$(GNUEFI)/inc/protocol
 CFLAGS = -fno-stack-protector -fpic -fshort-wchar -mno-red-zone $(GNU_INC) -DEFI_FUNCTION_WRAPPER -I../include
 
-OBJS = $(addprefix Build/, main.o data.o $(addprefix common/, files.o fs.o utils.o config.o))
+OBJS = $(addprefix Build/, $(addprefix x86_64-efi/, main.o data.o) files.o fs.o utils.o config.o)
 
 BUILDIR = Build
 
@@ -14,9 +14,7 @@ EFI_FILE = $(BUILDIR)/ReeBoot.efi
 ISO_DIR = $(BUILDIR)/iso
 ISO_FILE = $(BUILDIR)/ReeBoot.iso
 
-
-Build/%.o: %.c
-	@$(MAKE) -C $(GNUEFI)
+Build/%.o : ../%.c
 	mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -41,7 +39,6 @@ $(ISO_FILE): $(EFI_FILE)
 
 clean:
 	rm -rf $(BUILDIR)
-	rm -rf common/
 
 test: $(EFI_FILE)
 	dd if=/dev/zero of=$(IMG_FILE) bs=1k count=1440
