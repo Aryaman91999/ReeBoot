@@ -12,6 +12,7 @@ int efi_main(EFI_HANDLE Image, EFI_SYSTEM_TABLE *SystemTable) {
     unsigned char *Config;
     EFI_STATUS Status;
     unsigned char *Val;
+    CHAR16 *KernelPath;
 
     Status = LoadFile(GetRoot(Image), L"REEBOOT\\INITRD", &Content, &Size);
     if (EFI_ERROR(Status)) {
@@ -24,22 +25,18 @@ int efi_main(EFI_HANDLE Image, EFI_SYSTEM_TABLE *SystemTable) {
     }
     
     UINT64 ValSize = GetValue(Config, ConfigSize, "kernel", &Val);
-    
-    Print(L"Kernel: ");
 
+    KernelPath = AllocatePool(sizeof(CHAR16) * (ValSize+1));
+    KernelPath[ValSize] = (CHAR16)'\0';
     for (int i = 0; i < ValSize; i++) {
-        Print(L"%c", (CHAR16)Val[i]);
+        if (Val[i] == '/') {
+            KernelPath[i] = (CHAR16)'\\';
+        } else {
+            KernelPath[i] = Val[i];
+        }
     }
-    
-    Print(L"\n");
 
-    ValSize = GetValue(Config, ConfigSize, "size", &Val);
-    
-    Print(L"Size: ");
-    
-    for (int i = 0; i < ValSize; i++) {
-        Print(L"%c", (CHAR16)Val[i]);
-    }
+    Print(KernelPath);
 
     UINT8 *test;
     UINT64 TestSize = InitrdLoadFile(Content, "reeboot/test", &test);

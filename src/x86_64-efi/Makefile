@@ -49,7 +49,7 @@ test: $(EFI_FILE)
 	mkdir -p $(BUILDIR)/initrd/reeboot
 	touch $(BUILDIR)/initrd/reeboot/test
 	echo "Hello, World!" > $(BUILDIR)/initrd/reeboot/test
-	echo "kernel=hello\nsize=99" > $(BUILDIR)/config
+	echo "kernel=myos/kernel.bin\nsize=99" > $(BUILDIR)/config
 	tar -cf $(BUILDIR)/initrd.tar -C $(BUILDIR)/initrd/ reeboot/
 	mcopy -i $(IMG_FILE) $(BUILDIR)/initrd.tar ::/REEBOOT/INITRD
 	mcopy -i $(IMG_FILE) $(BUILDIR)/config ::/REEBOOT/CONFIG
