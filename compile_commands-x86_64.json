@@ -1,0 +1,122 @@
+[
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-fno-stack-protector",
+            "-fpic",
+            "-fshort-wchar",
+            "-mno-red-zone",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/x86_64",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/protocol",
+            "-DEFI_FUNCTION_WRAPPER",
+            "-I../include",
+            "-o",
+            "Build/x86_64-efi/main.o",
+            "main.c"
+        ],
+        "directory": "/home/aryaman9199/ReeBoot/src/x86_64-efi",
+        "file": "main.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-fno-stack-protector",
+            "-fpic",
+            "-fshort-wchar",
+            "-mno-red-zone",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/x86_64",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/protocol",
+            "-DEFI_FUNCTION_WRAPPER",
+            "-I../include",
+            "-o",
+            "Build/utils.o",
+            "../utils.c"
+        ],
+        "directory": "/home/aryaman9199/ReeBoot/src/x86_64-efi",
+        "file": "../utils.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-fno-stack-protector",
+            "-fpic",
+            "-fshort-wchar",
+            "-mno-red-zone",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/x86_64",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/protocol",
+            "-DEFI_FUNCTION_WRAPPER",
+            "-I../include",
+            "-o",
+            "Build/fs.o",
+            "../fs.c"
+        ],
+        "directory": "/home/aryaman9199/ReeBoot/src/x86_64-efi",
+        "file": "../fs.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-fno-stack-protector",
+            "-fpic",
+            "-fshort-wchar",
+            "-mno-red-zone",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/x86_64",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/protocol",
+            "-DEFI_FUNCTION_WRAPPER",
+            "-I../include",
+            "-o",
+            "Build/x86_64-efi/data.o",
+            "data.c"
+        ],
+        "directory": "/home/aryaman9199/ReeBoot/src/x86_64-efi",
+        "file": "data.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-fno-stack-protector",
+            "-fpic",
+            "-fshort-wchar",
+            "-mno-red-zone",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/x86_64",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/protocol",
+            "-DEFI_FUNCTION_WRAPPER",
+            "-I../include",
+            "-o",
+            "Build/files.o",
+            "../files.c"
+        ],
+        "directory": "/home/aryaman9199/ReeBoot/src/x86_64-efi",
+        "file": "../files.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-fno-stack-protector",
+            "-fpic",
+            "-fshort-wchar",
+            "-mno-red-zone",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/x86_64",
+            "-I/home/aryaman9199/ReeBoot/gnu-efi/inc/protocol",
+            "-DEFI_FUNCTION_WRAPPER",
+            "-I../include",
+            "-o",
+            "Build/config.o",
+            "../config.c"
+        ],
+        "directory": "/home/aryaman9199/ReeBoot/src/x86_64-efi",
+        "file": "../config.c"
+    }
+]
